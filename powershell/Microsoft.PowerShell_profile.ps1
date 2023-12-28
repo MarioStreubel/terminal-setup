@@ -1,4 +1,4 @@
-oh-my-posh --init --shell pwsh --config D:\oh-my-posh\ohmyposhv3-v2.json | Invoke-Expression
+oh-my-posh --init --shell pwsh --config https://raw.githubusercontent.com/MarioStreubel/terminal-setup/main/powershell/oh-my-posh/ohmyposhv3-v2.json | Invoke-Expression
 if ($host.Name -eq 'ConsoleHost')
 {
     Import-Module PSReadLine
@@ -15,9 +15,11 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # forward docker commands
-$DOCKER_DISTRO = "ubuntu"
-function docker {
-    wsl -d $DOCKER_DISTRO docker -H unix:///mnt/wsl/shared-docker/docker.sock @Args
+if($IsWindows) {
+  $DOCKER_DISTRO = "ubuntu"
+  function docker {
+      wsl -d $DOCKER_DISTRO docker -H unix:///mnt/wsl/shared-docker/docker.sock @Args
+  }
 }
 
 # Sometimes you enter a command but realize you forgot to do something else first.

@@ -6,7 +6,7 @@
 winget install JanDeDobbeleer.OhMyPosh
 refreshenv
 
-oh-my-posh --init --shell pwsh --config D:/Dropbox/ohmyposhv3-2.json | Invoke-Expressio
+oh-my-posh --init --shell pwsh --config https://raw.githubusercontent.com/MarioStreubel/terminal-setup/main/powershell/oh-my-posh/ohmyposhv3-v2.json | Invoke-Expression
 
 . $PROFILE
 
